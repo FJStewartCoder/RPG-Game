@@ -1,5 +1,6 @@
 from dialogue import dialogue
 import random as r
+import witch_games as w
 
 # if you gain more than a certain amoint of damage or health, you cant play any missions
 
@@ -105,7 +106,7 @@ def witch_1(player, bonus_type):
     # can't be opened with magic
     # it has a riddle on it
     # random riddle from a selection
-    # if you get it wrong you leave 
+    # if you get it wrong you leave
     pass
 
 
@@ -122,15 +123,24 @@ def witch_2(player, bonus_type):
 
 
 def witch_3(player, bonus_type):
-    # game of rock paper scissors
-    # you play best of 5 games
-    # if you win, the games continue.
-    # else you lose and you leave
-    # next you pick an option from her hands behind her back. 
-    # If you choose the option with dice you play a dice game where you both roll 2 die. Whoever's roll is higher wins. You play this 3 times. Best of three.
+    dialogue('Well, I do have some games for you. To prove your worth, we will begin with a best of 5 game of the classic...')
+    dialogue('Rock, Paper, Scissors... Good luck!')
+    if w.rock_paper_scissors(5, 'Witch'):
+        dialogue('Well done... Well done... You played well.')
+        dialogue('Now that you have proven you are good enough, I have another game for you.')
+    else:
+        dialogue('Hahahahahaha. You lose, So, you must leave. Goodbye Adventurer!')
+        return
+
+    dialogue('The next game, although simple, is entirely luck based. You will have 2 dice and you will roll them.')
+    dialogue('I, also, have 2 dice and will roll them. Whoever has the highest roll wins the round.')
+    dialogue('This game will be best of 5. Good luck!')
+
+    if w.dice_game(5, 'Witch'):
+        pass
+
     # If you win dice game you recieve a reward from the spinning wheel. Random number between 1, 2.
-    # The other option is an empty hand
-    # You leave if you get this
+    # else, you spin the de-buff wheel and recieve a debuff between 0.5 - 1
     pass
 
 
@@ -141,9 +151,9 @@ def witch(player):
     dialogue('She teleports infront of you, causing you to jump. You say to her "You really have to stop doing that. It is scaring off the neighbours."')
     dialogue('She asks "What do you want anyway? A quest?"')
     dialogue('Yes... how did you know?')
-    
+
     bonus_type = ''
-    
+
     if player.max_health >= 75 and player.damage >= 20:
         # not eligable for any reward.
         dialogue('Unfortunately, my spells are not strong enough to provide you any buffs. You must leave.')
@@ -157,7 +167,7 @@ def witch(player):
     else:
         dialogue('I see that your armour is weak, as well as you. I can offer to buff both your health and damage.')
         bonus_type = 'both'
-    
+
     dialogue('Will you accept my offer, Adventurer?', 0)
 
     while True:
@@ -175,4 +185,3 @@ def witch(player):
 
     quest_number = r.randint(1, 3)
     eval(f'witch_{quest_number}(player, bonus_type)')
-
