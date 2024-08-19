@@ -78,7 +78,7 @@ def armourer(player):
     pass
 
 
-def give_reward(bonus_type, reward_amount):
+def give_reward(player, bonus_type, reward_amount):
     if bonus_type == 'health':
         player.max_health *= reward_amount
         player.max_health = round(player.max_health)
