@@ -6,7 +6,6 @@ import missions as m
 import merchant_missions as mm
 import dialogue as d
 
-
 try:
     open('Savecodes.txt', 'x')
 except FileExistsError:
@@ -101,7 +100,7 @@ class Player:
 
                 return True
             else:
-                print('Defeating enemies failed.')
+                print('Defeating enemies failed.\n')
                 return False
 
         print('\nFight initialised...\n')
@@ -203,7 +202,7 @@ class Player:
                         return False
                     else:
                         print(
-                            'Unforunately, you are out of heals. Therefore, you have died. This means, this is the end of the road for you...')
+                            'Unfortunately, you are out of heals. Therefore, you have died. This means, this is the end of the road for you...')
                         t.sleep(10)
                         quit()
 
@@ -319,9 +318,9 @@ def merchant_menu(player, merchants):
         print('No merchants unlocked.')
         return
 
-    list_merchants.append('Quit')
+    list_merchants.insert(merchants, 'Quit')
 
-    for item in range(merchants):
+    for item in range(merchants + 1):
         print(f'{item + 1} - {list_merchants[item]}')
 
     while True:
@@ -441,6 +440,7 @@ def main(save_code):
                 continue
             case 'Merchants':
                 merchant_menu(player, merchants)
+                save_code = generate_save_code(player, merchants, missions)
 
             case 'Save':
                 save_code = generate_save_code(player, merchants, missions)
