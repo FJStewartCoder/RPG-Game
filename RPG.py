@@ -35,8 +35,8 @@ class Enemy:
                 self.damage = 15
                 self.max_health = 300
             case 'THE ALMIGHTY':
-                self.damage = 100
-                self.max_health = 2500
+                self.damage = 125
+                self.max_health = 3500
 
         self.health = self.max_health
 
@@ -141,6 +141,9 @@ class Player:
                 while True:
                     try:
                         choice = int(input('>>> '))
+                        if choice > len(choices) or choice <= 0:
+                            print('Try again.')
+                            continue
                         break
                     except ValueError:
                         print('Try again!')
@@ -148,7 +151,16 @@ class Player:
 
                 match choices[choice - 1]:
                     case 'Fight':
-                        enemy.health -= self.damage
+                        critical_multiplier = 1
+                        if randint(1, 4) == 1:
+                            if randint(1, 4) == 1:
+                                critical_multiplier = 4
+                            else:
+                                critical_multiplier = 2
+
+                            print(f'Critical hit! {critical_multiplier}x Damage!')
+
+                        enemy.health -= self.damage * critical_multiplier
                     case 'Heal':
                         if self.health == self.max_health:
                             print('You already have max health.')
@@ -326,6 +338,9 @@ def merchant_menu(player, merchants):
     while True:
         try:
             choice = int(input('>>> '))
+            if choice > len(list_merchants) or choice <= 0:
+                print('Try again.')
+                continue
         except ValueError:
             print('Try again!')
             continue
@@ -420,6 +435,9 @@ def main(save_code):
         while True:
             try:
                 choice = int(input('>>> '))
+                if choice > len(choices) or choice <= 0:
+                    print('Try again.')
+                    continue
                 break
             except ValueError:
                 print('Try again!')
@@ -519,8 +537,8 @@ def prologue():
             player.health = player.max_health
         else:
             d.dialogue(
-                'You wielded your weapon well. I will provide you with a sword, a 2dmg bonus.')
-            player.damage += 2
+                'You wielded your weapon well. I will provide you with a sword, a 1dmg bonus.')
+            player.damage += 1
     else:
         d.dialogue(
             '\nRunning was the cowardly option. We must now take the long way around.')

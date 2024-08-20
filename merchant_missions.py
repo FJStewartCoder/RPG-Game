@@ -18,14 +18,16 @@ def swordsmith(player):
         return
 
     enemy_type = r.choice(['z', 'w'])
-    enemy_amount = r.randint(1, 15)
-    enemy_code = enemy_type + str(enemy_amount)
 
     if enemy_type == 'z':
         enemy_name = 'zombie'
+        enemy_amount = enemy_amount = r.randint(1, 15)
     else:
         enemy_name = 'wild boar'
+        enemy_amount = enemy_amount = r.randint(1, 5)
         reward_multiplier = 2
+    
+    enemy_code = enemy_type + str(enemy_amount)
 
     reward_multiplier += enemy_amount // 5
 
@@ -325,6 +327,9 @@ def armourer(player):
         while True:
             try:
                 choice = int(input('>>> '))
+                if choice > len(choices) or choice <= 0:
+                    print('Try again.')
+                    continue
                 break
             except ValueError:
                 print('Try again!')
@@ -514,8 +519,6 @@ def witch_3(player, bonus_type):
 
 
 def witch(player):
-    witch_3(player, 'damage')
-
     dialogue("You walk to the Witch's hut.")
     dialogue('\nShe teleports infront of you, causing you to jump. You say to her "You really have to stop doing that. It is scaring off the neighbours."')
     dialogue('\nShe asks "What do you want anyway? A quest?"')

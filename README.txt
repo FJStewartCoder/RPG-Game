@@ -1,6 +1,12 @@
 To run the game, open the file named 'RPG.py' and run it. The other files allow the game to run. Ensure the 'RPG.py' file is run from within the folder.
+This game requires the use of Python version 3.10 or later because of the use of match case statements.
+Ensure that Python 3.10 or later is installed before trying to play.
+
+If you encounter any issues, bugs or things you don't think should be happening. Please leave a comment on the GitHub page. 
+If you have any ideas for the game, excluding additionial missions after mission 10, leave a comment on the GitHub page.
 
 Future Ideas:
--Fix on number menus exceeding number limit and game crashes.
--Merchant missions all being done.
--More riddles for the witch
+-More riddles for the witch.
+-More robust save codes.
+-Character and enemy encyclopedia.
+-Potentially, achievements.
