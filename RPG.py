@@ -525,7 +525,10 @@ def main(save_code):
                 input_save_code = input(
                     'Enter your, 10 character, save code: ').upper()
                 if len(input_save_code) == 10:
-                    player, merchants, missions = load_game(input_save_code)
+                    if not load_game(input_save_code):
+                        player, merchants, missions = load_game(input_save_code)
+                    else:
+                        print('Try again.')
                 else:
                     print('Try again!')
             case 'Reading Speed':
@@ -611,7 +614,10 @@ if __name__ == '__main__':
                 input_save_code = input(
                     'Enter your, 10 character, save code: ').upper()
                 if len(input_save_code) == 10:
-                    main(input_save_code)
+                    if not load_game(input_save_code):
+                        main(input_save_code)
+                    else:
+                        print('Try again.')
             else:
                 print()
                 player = prologue()
