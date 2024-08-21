@@ -16,9 +16,9 @@ def swordsmith(player):
         dialogue('He says "YOU TOO POWERFUL!" Then, he shuts you out.')
         return
 
-    enemy_type = r.choice(['z', 'w'])
+    enemy_type = r.choice(['Z', 'w'])
 
-    if enemy_type == 'z':
+    if enemy_type == 'Z':
         enemy_name = 'zombie'
         enemy_amount = enemy_amount = r.randint(1, 15)
     else:
@@ -384,20 +384,20 @@ def armourer(player):
 
 def give_reward(player, bonus_type, reward_amount):
     if bonus_type == 'health':
-        health_bonus = round(player.max_health * reward_amount)
+        health_bonus = round(player.max_health * (reward_amount - 1))
         player.add_health(health_bonus, True)
 
     elif bonus_type == 'damage':
-        damage_bonus = round(player.damage * reward_amount)
+        damage_bonus = round(player.damage * (reward_amount - 1))
         player.add_damage(damage_bonus)
 
     else:
         reward_amount = (reward_amount + 1)/2
 
-        damage_bonus = round(player.damage * reward_amount)
+        damage_bonus = round(player.damage * (reward_amount - 1))
         player.add_damage(damage_bonus)
 
-        health_bonus = round(player.max_health * reward_amount)
+        health_bonus = round(player.max_health * (reward_amount - 1))
         player.add_health(health_bonus, True)
 
 
@@ -452,7 +452,7 @@ def witch_2(player, bonus_type):
     dialogue('\nThere are three houses that you could raid. If you help me, I will give the same amount of buff that is in the house.')
     dialogue('\nSuddenly, more zombies appear.')
 
-    if player.fight(True, 'z100'):
+    if player.fight(True, 'Z100'):
         dialogue('Whew! Another lot defeated.')
     else:
         dialogue('We should go back to the village. You never know when more will appear.')

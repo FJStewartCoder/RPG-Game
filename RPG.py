@@ -16,12 +16,15 @@ class Enemy:
     def __init__(self, type: str):
         self.type = type
         match type:
-            case 'Zombie':
+            case 'Zombie Child':
                 self.damage = 2
-                self.max_health = 5
+                self.max_health = 10
+            case 'Zombie':
+                self.damage = 3
+                self.max_health = 15
             case 'Guard':
-                self.damage = 4
-                self.max_health = 30
+                self.damage = 5
+                self.max_health = 25
             case 'Wild Boar':
                 self.damage = 10
                 self.max_health = 50
@@ -107,7 +110,8 @@ class Player:
 
         total_heals = 3
         enemies = []
-        enemy_dict = {'z': 'Zombie',
+        enemy_dict = {'Z': 'Zombie',
+                      'z': 'Zombie Child',
                       'g': 'Guard',
                       'w': 'Wild Boar',
                       'm': 'Boar Merchant',

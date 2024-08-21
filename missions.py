@@ -179,7 +179,7 @@ def mission_3(player):
                     '\nYOU WILL FACE 3 WAVES OF MONSTERS. WORST OF LUCK TO YOU.')
                 dialogue('\nWAVE 1 COMMENCING...')
 
-                if player.fight(True, 'z5', 'g3', 'w1'):
+                if player.fight(True, 'Z5', 'g3', 'w1'):
                     dialogue('WAVE 2 COMMENCING...')
                 else:
                     dialogue(
@@ -213,7 +213,7 @@ def mission_3(player):
                 dialogue(
                     'You walk down the path but you see some enemies... and you are trapped.', bonus_sleep_time=1)
 
-                if player.fight('z5', 'w5'):
+                if player.fight('Z5', 'w5'):
                     dialogue(
                         'Whew! I thought we were going to die. We should run.')
                 else:
@@ -800,7 +800,7 @@ def mission_7_gravel(player):
     dialogue('He tells you should take the gravel path.')
     dialogue('You continue via the gravel path...')
     dialogue('\nImmediately, you are swarmed by enemies...')
-    if player.fight(True, 'z10', 'g10', 'w10'):
+    if player.fight(True, 'Z10', 'g10', 'w10'):
         dialogue('You are happy that the enemies are out of the way. You continue.')
     else:
         dialogue(
@@ -850,12 +850,12 @@ def mission_7_tunnel(player):
     dialogue('\nHowever, you are interupted by a swarm of enemies.')
 
     if not player.fight(True, 'w10', 'g20'):
-        dialogue('Upon running you drop some gear. You lose 1dmg and 5hp.')
+        dialogue('Upon running you drop some gear. You lose 1dmg and 5hp.\n')
 
         player.add_damage(-1)
         player.add_health(-5)
 
-    dialogue('\nYou see more enemies coming... You run.', bonus_sleep_time=1)
+    dialogue('You see more enemies coming... You run.', bonus_sleep_time=1)
     dialogue('\nYou do not walk far, before a shadow descends upon you.')
     dialogue('You see a towering, armoured guard before you. You must fight it.')
 
@@ -907,21 +907,21 @@ def mission_8(player):
             case 'damage':
                 dialogue('She says "I will give you a 20% damage boost."')
 
-                damage_bonus = round(player.damage * 1.2)
+                damage_bonus = round(player.damage * 0.2)
                 player.add_damage(damage_bonus)
             case 'health':
                 dialogue('She says "I will give you a 20% health boost."')
 
-                health_bonus = round(player.max_health * 1.2)
+                health_bonus = round(player.max_health * 0.2)
                 player.add_health(health_bonus, True)
             case 'both':
                 dialogue(
                     'She says "I will give you a 10% damage boost and 10% health boost."')
 
-                damage_bonus = round(player.damage * 1.1)
+                damage_bonus = round(player.damage * 0.1)
                 player.add_damage(damage_bonus)
 
-                health_bonus = round(player.max_health * 1.1)
+                health_bonus = round(player.max_health * 0.1)
                 player.add_health(health_bonus, True)
             case _:
                 print('Try again!')
@@ -1136,7 +1136,7 @@ def mission_9(player):
         'When you arrive at the guardian, several swarms of guards prepare to attack you.')
 
     dialogue('\nWAVE 1 COMMENCING...')
-    if player.fight(True, 'z25', 'g15', 'w10'):
+    if player.fight(True, 'Z25', 'g15', 'w10'):
         dialogue('WAVE 2 COMMENCING...')
     else:
         dialogue('Running causes the boars trample you. You die from your injuries.')

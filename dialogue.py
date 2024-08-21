@@ -1,7 +1,7 @@
 from time import sleep
 from time import perf_counter
 
-reading_speed = 180  # words per minute
+reading_speed = 18000  # words per minute
 
 
 def reading_test():
