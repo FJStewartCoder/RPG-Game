@@ -67,7 +67,7 @@ def swordsmith(player):
         dialogue(
             f'\nWhen you arrive back, the Swordsmith presents you with a sword. You gain {reward} damage.')
 
-        player.damage += reward
+        player.add_damage(reward)
     else:
         dialogue(f'The Swordsmith sees you struggling. So he performs a secret whistle that stops the {enemy_name}s from attacking you.')
         dialogue('\nHe picks you up by your feet and drags you back to his hut.')
@@ -377,32 +377,29 @@ def armourer(player):
     else:
         dialogue('A full house. Very well done, Adventurer. Now, I will be able to go on with everything I want to.')
         dialogue('For your incredible effort, I will award you a chestplate. A 15hp bonus.')
-    
-    player.max_health += items_collected * 5
-    player.health += items_collected * 5
+
+    player.add_health(items_collected * 5)
 
     dialogue('\nThank you again, Adventurer. Goodbye!')
 
 
 def give_reward(player, bonus_type, reward_amount):
     if bonus_type == 'health':
-        player.max_health *= reward_amount
-        player.max_health = round(player.max_health)
-        player.health = player.max_health
+        health_bonus = round(player.max_health * reward_amount)
+        player.add_health(health_bonus, True)
 
     elif bonus_type == 'damage':
-        player.damage *= reward_amount
-        player.damage = round(player.damage)
+        damage_bonus = round(player.damage * reward_amount)
+        player.add_damage(damage_bonus)
 
     else:
         reward_amount = (reward_amount + 1)/2
 
-        player.damage *= reward_amount
-        player.damage = round(player.damage)
+        damage_bonus = round(player.damage * reward_amount)
+        player.add_damage(damage_bonus)
 
-        player.max_health *= reward_amount
-        player.max_health = round(player.max_health)
-        player.health = player.max_health
+        health_bonus = round(player.max_health * reward_amount)
+        player.add_health(health_bonus, True)
 
 
 def witch_riddle_1():

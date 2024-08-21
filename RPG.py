@@ -224,6 +224,35 @@ class Player:
             print('Well done! You defeated all the enemies.\n')
             return True
 
+    def add_health(self, amount, set_max_health=False):
+        if amount > 0:
+            if self.max_health + amount < 255:
+                self.max_health += amount
+            else:
+                self.max_health = 255
+
+            if set_max_health:
+                self.health = self.max_health
+            elif self.health + amount < 255:
+                self.health += amount
+            else:
+                self.health = 255
+        else:
+            if self.max_health - amount <= 0:
+                return False
+            else:
+                self.max_health -= amount
+                if self.health > self.max_health:
+                    self.health = self.max_health
+
+                return True
+
+    def add_damage(self, amount):
+        if self.damage + amount > 255:
+            self.damage = 255
+        else:
+            self.damage += amount
+
 
 code_randomiser = {'A': 123456789,
                    'B': 985412763,
@@ -296,6 +325,7 @@ def generate_save_code(player, merchants=0, missions=0) -> str:
 
 
 def load_game(shuffled_code) -> None:
+    is_valid = True
     save_code = list('xxxxxxxxx')
 
     shuffle_char = shuffled_code[-1]
@@ -321,7 +351,21 @@ def load_game(shuffled_code) -> None:
 
     player = Player('Loaded', max_health=max_hp, health=hp, damage=dmg)
 
-    return player, merchants, missions
+    if missions > 10:
+        is_valid = False
+    elif player.health > player.max_health:
+        is_valid = False
+    elif merchants == 1 and missions <= 2:
+        is_valid = False
+    elif merchants == 2 and missions <= 4:
+        is_valid = False
+    elif merchants == 3 and missions <= 7:
+        is_valid = False
+
+    if is_valid:
+        return player, merchants, missions
+    else:
+        return False
 
 
 def merchant_menu(player, merchants):
@@ -533,12 +577,13 @@ def prologue():
         if player.health < player.max_health:
             d.dialogue(
                 'I see you took some damage. I will provide you with some armour, a 5hp bonus, and fully heal you.')
-            player.max_health += 5
-            player.health = player.max_health
+
+            player.add_health(5, True)
         else:
             d.dialogue(
                 'You wielded your weapon well. I will provide you with a sword, a 1dmg bonus.')
-            player.damage += 1
+
+            player.add_damage(1)
     else:
         d.dialogue(
             '\nRunning was the cowardly option. We must now take the long way around.')

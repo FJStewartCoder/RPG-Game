@@ -7,6 +7,5 @@ If you have any ideas for the game, excluding additionial missions after mission
 
 Future Ideas:
 -More riddles for the witch.
--More robust save codes.
 -Character and enemy encyclopedia.
 -Potentially, achievements.

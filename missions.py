@@ -40,9 +40,8 @@ def mission_1(player):
                 '\nYou find some armour and weapons and you are teleported back to the village. You gain 10dmg and 50hp.')
             dialogue('\nYou remember nothing...', bonus_sleep_time=1)
 
-            player.damage += 10
-            player.max_health += 50
-            player.health = player.max_health
+            player.add_damage(10)
+            player.add_health(50, True)
         else:
             dialogue(
                 '\nI forgot to mention that no one has ever survived that. I am glad you are alive.')
@@ -76,9 +75,8 @@ def mission_1(player):
             dialogue(
                 'You find a shiny sword and wooden shield. You gain 1dmg and 5hp. Then you head back to the village.')
 
-            player.damage += 1
-            player.max_health += 5
-            player.health = player.max_health
+            player.add_damage(1)
+            player.add_health(5, True)
 
             break
 
@@ -127,9 +125,8 @@ def mission_2(player):
                 dialogue(
                     '\nYou thank him and leave, swiftly. You gain 1dmg and 5hp.')
 
-                player.damage += 1
-                player.max_health += 5
-                player.health += 5
+                player.add_damage(1)
+                player.add_health(5)
 
                 break
             case _:
@@ -151,14 +148,13 @@ def mission_3(player):
                     '\nBrilliant choice, Adventurer. This sword has been mine, since I was a small child. Wield it well and keep it safe for me.')
                 dialogue('\nYou take the sword, carefully. You gain 3dmg.')
 
-                player.damage += 3
+                player.add_damage(3)
                 break
             case 'armour':
                 dialogue("\nThe scared man's choice. Well, don't fear. This armour will provide you with incredible protection. Made from the strongest titanium, you'll be almost invincible with this.")
                 dialogue('\nYou put on the armour. You gain 15hp.')
 
-                player.max_health += 15
-                player.health += 15
+                player.add_health(15)
                 break
             case _:
                 print('Try again!')
@@ -249,8 +245,7 @@ def mission_3(player):
                     dialogue(
                         'Well done! You passed the greed test. As a reward, take a 5hp bonus.')
 
-                    player.max_health += 5
-                    player.health += 5
+                    player.add_health(5)
                     break
                 case _:
                     print('Try again!')
@@ -300,7 +295,7 @@ def mission_4_alt1(player):
                     dialogue(
                         'When you run, you drop your weapon. However, you have survived. You lose 2dmg.')
 
-                    player.damage -= 2
+                    player.add_damage(-2)
                 break
             case _:
                 print('Try again!')
@@ -327,12 +322,13 @@ def mission_4_alt1(player):
                 dialogue(
                     'The curse causes you to lose half of your maximum health and damage.')
 
-                if player.damage > 1:
-                    player.damage //= 2
                 if player.max_health > 1:
                     player.max_health //= 2
                 if player.health > player.max_health:
                     player.health = player.max_health
+
+                player.add_damage(-1 * (player.damage // 2))
+
                 dialogue('Cursed, you walk down the path.\n')
                 break
             case 'no':
@@ -380,8 +376,7 @@ def mission_4_ending(player):
         dialogue(
             'Well done, Adventurer. Thank you for saving me. Take this armour as a reward. You gain 5hp.')
 
-        player.max_health += 5
-        player.health += 5
+        player.add_health(5)
 
         dialogue('We should run back to the village. Tommorow, meet me for a quest.')
         dialogue('\nYou return to the village.\n')
@@ -427,17 +422,15 @@ def mission_4(player):
         bonus = randint(1, 3)
         if bonus == 1:
             dialogue('You find a damaged helmet. You gain 5hp.')
-            player.health += 5
-            player.max_health += 5
+            player.add_health(5)
         elif bonus == 2:
             dialogue('You find a blunt mace. You gain 1dmg.')
-            player.damage += 1
+            player.add_damage(1)
         else:
             dialogue(
                 'You find a damaged helmet and a blunt mace. You gain 5hp and 1dmg.')
-            player.health += 5
-            player.max_health += 5
-            player.damage += 1
+            player.add_health(5)
+            player.add_damage(1)
 
     else:
         dialogue(
@@ -456,9 +449,8 @@ def mission_4(player):
         weapon_damage = player.damage // 2
         dialogue(f'\nYou permenantly lose 15hp and {weapon_damage}dmg.')
 
-        player.health -= 15
-        player.max_health -= 15
-        player.damage -= weapon_damage
+        player.add_health(-15)
+        player.add_damage(-1 * weapon_damage)
 
     dialogue('\nNow, you can see the merchant through the trees. However, you are faced with multiple paths...', bonus_sleep_time=1)
     dialogue('You see a left path that leads through some brambles, a path in the middle that leads straight to the merchant and a path to the right. You can see nothing on the right path.')
@@ -663,8 +655,7 @@ def mission_5(player):
     dialogue(
         f'\nAnyways, here is a reward based on the items you brought back for me. You get a {armour_reward}hp bonus.')
 
-    player.max_health += armour_reward
-    player.health += armour_reward
+    player.add_health(armour_reward)
 
     dialogue('\nThank you again, Adventurer.')
     dialogue('\nYou leave...', 1)
@@ -710,9 +701,7 @@ def mission_6(player):
             dialogue(
                 'You walk a short way down the path. As you walk, your armour melts off due to the heat of the lava. You lose 10hp.')
 
-            player.max_health -= 10
-            if player.health > player.max_health:
-                player.health = player.max_health
+            player.add_health(-10)
 
     else:
         dialogue(
@@ -758,13 +747,12 @@ def mission_6(player):
             case 'damage':
                 dialogue('You gain 10dmg.')
 
-                player.damage += 10
+                player.add_damage(10)
                 return
             case 'health':
                 dialogue('You gain 50hp.')
 
-                player.health += 50
-                player.max_health += 50
+                player.add_health(50)
                 break
             case _:
                 print('Try again!')
@@ -847,16 +835,13 @@ def mission_7_gravel(player):
         dialogue(
             'Quickly, you steal their armour and swords before running. You gain 20hp and 4dmg.')
 
-        player.health += 20
-        player.max_health += 20
-        player.damage += 4
+        player.add_health(20)
+        player.add_damage(4)
     else:
         dialogue('Upon running you drop some gear. You lose 1dmg and 5hp')
 
-        player.damage -= 1
-        player.max_health -= 5
-        if player.health > player.max_health:
-            player.health = player.max_health
+        player.add_damage(-1)
+        player.add_health(-5)
 
     dialogue('You have to jump over another fence but...')
 
@@ -870,10 +855,8 @@ def mission_7_tunnel(player):
     if not player.fight(True, 'w10', 'g20'):
         dialogue('Upon running you drop some gear. You lose 1dmg and 5hp.')
 
-        player.damage -= 1
-        player.max_health -= 5
-        if player.health > player.max_health:
-            player.health = player.max_health
+        player.add_damage(-1)
+        player.add_health(-5)
 
     dialogue('\nYou see more enemies coming... You run.', bonus_sleep_time=1)
     dialogue('\nYou do not walk far, before a shadow descends upon you.')
@@ -883,9 +866,8 @@ def mission_7_tunnel(player):
         dialogue('After defeating the mega guard, you pick up some of the gear it had. You gain 20hp from the carbon-plated armour and 4dmg from the lava sword.')
         dialogue('\nYou see that there is a short walk left to go.')
 
-        player.health += 20
-        player.max_health += 20
-        player.damage += 4
+        player.add_health(20)
+        player.add_damage(4)
     else:
         dialogue(
             "Due to it's slow speed, you are able to run passed it. You see only a short way left to go.")
@@ -927,24 +909,22 @@ def mission_8(player):
             case 'damage':
                 dialogue('She says "I will give you a 20% damage boost."')
 
-                player.damage *= 1.2
-                player.damage = round(player.damage)
+                damage_bonus = round(player.damage * 1.2)
+                player.add_damage(damage_bonus)
             case 'health':
                 dialogue('She says "I will give you a 20% health boost."')
 
-                player.max_health *= 1.2
-                player.max_health = round(player.max_health)
-                player.health = player.max_health
+                health_bonus = round(player.max_health * 1.2)
+                player.add_health(health_bonus, True)
             case 'both':
                 dialogue(
                     'She says "I will give you a 10% damage boost and 10% health boost."')
 
-                player.damage *= 1.1
-                player.damage = round(player.damage)
+                damage_bonus = round(player.damage * 1.1)
+                player.add_damage(damage_bonus)
 
-                player.max_health *= 1.1
-                player.max_health = round(player.max_health)
-                player.health = player.max_health
+                health_bonus = round(player.max_health * 1.1)
+                player.add_health(health_bonus, True)
             case _:
                 print('Try again!')
                 continue
@@ -964,12 +944,12 @@ def mission_8(player):
             case 'carbon':
                 dialogue('You choose the carbon steel hammer. You gain 4dmg.')
 
-                player.damage += 4
+                player.add_damage(4)
                 break
             case 'obsidian':
                 dialogue('You choose the obsidian hammer. You gain 5dmg.')
 
-                player.damage += 5
+                player.add_damage(5)
                 break
             case _:
                 print('Try again!')
@@ -988,15 +968,13 @@ def mission_8(player):
             case 'boots':
                 dialogue('You choose the fireproof boots. You gain 30hp.')
 
-                player.health += 30
-                player.max_health += 30
+                player.add_health(30)
                 break
             case 'helmet':
                 dialogue('You choose the dragon helmet. You gain 15hp and 3dmg.')
 
-                player.health += 15
-                player.max_health += 15
-                player.damage += 3
+                player.add_health(15)
+                player.add_damage(3)
                 break
             case _:
                 print('Try again!')
