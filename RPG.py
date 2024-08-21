@@ -254,7 +254,7 @@ class Player:
             self.damage += amount
 
 
-code_randomiser = {'A': 123456789,
+code_randomiser = {'A': 498712536,
                    'B': 985412763,
                    'C': 192837465,
                    'D': 918273645,
@@ -351,9 +351,20 @@ def load_game(shuffled_code) -> None:
 
     player = Player('Loaded', max_health=max_hp, health=hp, damage=dmg)
 
-    if missions > 10:
+    max_stats_per_level = ['6|35', '16|85', '21|90', '26|110', '26|115', '26|130', '36|170', '40|190', '74|255', '74|255']
+    # actual stat for mission 8, 9 = 258 but it exceeds limit so it is 255
+
+    if missions < 10:
+        possible_max_dmg, possible_max_hp = max_stats_per_level[missions].split('|')
+
+        if player.max_health > int(possible_max_hp):
+            is_valid = False
+        elif player.damage > int(possible_max_dmg):
+            is_valid = False
+    else:
         is_valid = False
-    elif merchants > 3:
+
+    if merchants > 3:
         is_valid = False
     elif player.health > player.max_health:
         is_valid = False

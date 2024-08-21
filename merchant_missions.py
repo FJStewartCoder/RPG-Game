@@ -169,7 +169,7 @@ def shop_metalworker(money, inventory):
     if money < 50:
         dialogue('Unfortunately, I can not offer you one.')
         return money
-    
+
     cost = 50
     final_offer = False
 
@@ -191,7 +191,7 @@ def shop_metalworker(money, inventory):
 
                         messages = [f'How about {cost}?', f'Maybe, I can do {cost}', f'I could go to {cost}.', f'Will you take one for {cost}?']
                         message = r.choice(messages)
-                        
+
                         dialogue(f'\n{message}')
                     else:
                         dialogue('\nUnfortunately, I can not go any lower.')
@@ -200,7 +200,7 @@ def shop_metalworker(money, inventory):
             case _:
                 print('Try again!')
                 continue
-    
+
     dialogue('\nI like your offer. However, which item would you like?')
     dialogue('Would you like the PICKAXE or the AXE?', 0)
 
@@ -218,7 +218,7 @@ def shop_metalworker(money, inventory):
             case _:
                 print('Try again!')
                 continue
-    
+
     dialogue('\nIt was good doing business, with you. Goodbye, Adventurer.')
     money -= cost
 
@@ -236,7 +236,7 @@ def shop_chemist(money, inventory):
         dialogue('\nUnfortunately, you do not have enough money for my items.')
         dialogue('You leave.')
         return money
-    
+
     dialogue('\nSo, which item do you want... the glass BOTTLE or the POTION?', 0)
     while True:
         choice: str = input('>>> ').lower()
@@ -252,7 +252,7 @@ def shop_chemist(money, inventory):
             case _:
                 print('Try again!')
                 continue
-    
+
     money -= 10
 
     dialogue('\nHEHEHEHEHEHE. Thank you, Adventurer, for you purchase.')
@@ -285,14 +285,14 @@ def shop_villager(money, inventory):
     else:
         dialogue('.tceffe siht xif lliw ti ,noitop a em teg nac uoy fI', bonus_sleep_time=4)
         in_reverse = True
-    
+
     if in_reverse:
         dialogue('\nThe villager runs off screaming "HHHUUUUUAAAAAHHHHHHHHH!"')
     else:
         dialogue('\nI can not thank you enough, Adventurer.')
         dialogue('Take this bucket and shovel, for free.')
         dialogue('\nYou leave, equipped with a bucket and shovel.')
-        
+
         inventory.append('Bucket')
         inventory.append('Shovel')
 
@@ -304,7 +304,7 @@ def armourer(player):
     if player.health >= 100:
         dialogue('You have just caught me, as I leave to go shopping. I will catch up with you later.')
         return
-    
+
     items_needed = r.choices(['Small Hammer', 'Large Hammer', 'Plank of Wood', 'Sandpaper', 'Pickaxe', 'Axe', 'Glass Bottle', 'Potion', 'Bucket', 'Shovel'], k=3)
 
     dialogue('I am so glad to see you Adventurer. I have been robbed. Again. That Woodworker is a menace. He keeps robbing me of my things.')
@@ -460,7 +460,7 @@ def witch_2(player, bonus_type):
         return
 
     dialogue('\nFinally, you reach the three huts. Which one will you raid... the LEFT hut, the MIDDLE hut or the RIGHT hut.', 0)
-    
+
     while True:
         choice: str = input('>>> ').lower()
         match choice:
@@ -476,7 +476,7 @@ def witch_2(player, bonus_type):
             case _:
                 print('Try again!')
                 continue
-    
+
     reward = round(r.random() + 1, 2)
     dialogue(f'\nOnce you finish raiding the hut, the Witch says "Nice job! I can reward you, with a {round(100 * (reward - 1))}% boost."')
     dialogue('\nWe will now return to the village, victorious.')
@@ -527,10 +527,10 @@ def witch(player):
         # not eligable for any reward.
         dialogue('Unfortunately, my spells are not strong enough to provide you any buffs. You must leave.')
         return
-    elif player.damage >= 20:
+    elif player.damage >= 30:
         dialogue('You are, already, very strong. I can offer you a health boost.')
         bonus_type = 'health'
-    elif player.max_health >= 75:
+    elif player.max_health >= 150:
         dialogue('You, already, have a lot of armour. So, I can offer you a damage boost.')
         bonus_type = 'damage'
     else:

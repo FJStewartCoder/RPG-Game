@@ -895,6 +895,7 @@ def mission_7(player):
     dialogue('\nThe shaken witch is sitting in the middle of the cage room. She tells you that when she broke out of the cage, it set off the security and the guards came to attack the village.')
     dialogue(
         '\nShe thanks you for coming back for her and she teleports you back to the village...')
+    dialogue('\n*Witch Unlocked*')
 
 
 def mission_8(player):
