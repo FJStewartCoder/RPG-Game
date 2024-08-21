@@ -26,7 +26,7 @@ def swordsmith(player):
         enemy_name = 'wild boar'
         enemy_amount = enemy_amount = r.randint(1, 5)
         reward_multiplier = 2
-    
+
     enemy_code = enemy_type + str(enemy_amount)
 
     reward_multiplier += enemy_amount // 5
@@ -354,7 +354,7 @@ def armourer(player):
                 return
             case _:
                 print('Try again!')
-    
+
     items_collected = 0
     for item in items_needed:
         if item in inventory:
@@ -449,7 +449,7 @@ def witch_2(player, bonus_type):
     else:
         dialogue('We should go back to the village. There is only more from here.')
         return
-    
+
     dialogue('\nThere are three houses that you could raid. If you help me, I will give the same amount of buff that is in the house.')
     dialogue('\nSuddenly, more zombies appear.')
 
