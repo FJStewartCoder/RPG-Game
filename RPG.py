@@ -353,6 +353,8 @@ def load_game(shuffled_code) -> None:
 
     if missions > 10:
         is_valid = False
+    elif merchants > 3:
+        is_valid = False
     elif player.health > player.max_health:
         is_valid = False
     elif merchants == 1 and missions <= 2:
