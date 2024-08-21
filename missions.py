@@ -1,9 +1,6 @@
 from random import randint
 from dialogue import dialogue
 
-# change code A once missions are checked
-# test stats
-
 
 def die():
     dialogue('\nUnfortunately, this is the end of the road for you...')

@@ -6,7 +6,7 @@ If you encounter any issues, bugs or things you don't think should be happening.
 If you have any ideas for the game, excluding additionial missions after mission 10, leave a comment on the GitHub page.
 
 Future Ideas:
--Improve robust save codes to not allow more than a theoretical limit of health and damage depending on mission.
+-Adjust enemy amounts in missions. Potentially, new enemy.
 -More riddles for the witch.
 -Character and enemy encyclopedia.
 -Potentially, achievements.
