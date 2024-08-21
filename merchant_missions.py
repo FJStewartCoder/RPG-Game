@@ -2,8 +2,7 @@ from dialogue import dialogue
 import random as r
 import witch_games as w
 
-# if you gain more than a certain amoint of damage or health, you cant play any missions
-# spacing on witch mission 3
+# if you gain more than a certain amount of damage or health, you can't play any missions
 
 
 def swordsmith(player):
