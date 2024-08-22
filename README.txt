@@ -9,4 +9,3 @@ Future Ideas:
 -Adjust enemy amounts in missions. Potentially, new enemy.
 -More riddles for the witch.
 -Character and enemy encyclopedia.
--Potentially, achievements.

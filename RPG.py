@@ -24,7 +24,7 @@ class Enemy:
                 self.max_health = 15
             case 'Guard':
                 self.damage = 5
-                self.max_health = 25
+                self.max_health = 35
             case 'Wild Boar':
                 self.damage = 10
                 self.max_health = 50
@@ -32,7 +32,7 @@ class Enemy:
                 self.damage = 20
                 self.max_health = 150
             case 'Bushcraft Warrior':
-                self.damage = 5
+                self.damage = 10
                 self.max_health = 200
             case 'MEGA GUARD':
                 self.damage = 15
@@ -92,7 +92,7 @@ class Player:
             total_turns = total_enemy_health / self.damage
 
             total_enemy_damage *= total_turns
-            total_enemy_damage /= 2
+            total_enemy_damage *= 0.75
 
             if total_player_health - total_enemy_damage >= 0:
                 self.health = round(total_player_health -
@@ -196,7 +196,7 @@ class Player:
 
                 if enemy.health > 0:
                     if choice == 2:
-                        if randint(1, 9) == 1:
+                        if randint(1, 8) == 1:
                             print(f'{enemy.type} hit you.')
                             self.health -= enemy.damage
                         else:
@@ -204,11 +204,11 @@ class Player:
 
                         print(f'You have {total_heals} heals left')
                     else:
-                        if randint(1, 2) == 1:
+                        if randint(1, 4) == 1:
+                            print('You dodged.')
+                        else:
                             print(f'{enemy.type} hit you.')
                             self.health -= enemy.damage
-                        else:
-                            print('You dodged.')
 
                 if self.health < 1:
                     if total_heals > 0:

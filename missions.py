@@ -204,11 +204,26 @@ def mission_3(player):
 
                     die()
             case 'three':
+                current_continues = 0
+                continues_to_survive = 200
                 dialogue(
                     'You wander down the path. You turn around... and see... THE FOG.', bonus_sleep_time=2)
-                dialogue('You are engulfed by the fog and die...')
+                
+                while True:
+                    if current_continues >= continues_to_survive:
+                        dialogue('You walk so far down the path that you outrun the fog.')
+                    else:
+                        dialogue('What will you do... CONTINUE or STOP?', 0)
 
-                die()
+                        choice: str = input('>>> ').lower()
+                        match choice:
+                            case 'stop':
+                                dialogue('By stopping, you are engulfed by the fog and die...')
+                                die()
+                            case '_':
+                                dialogue('You walk further down the path, the fog still behind you.')
+                                current_continues += 1
+                                continue
             case 'four':
                 dialogue(
                     'You walk down the path but you see some enemies... and you are trapped.', bonus_sleep_time=1)
@@ -366,10 +381,10 @@ def mission_4_alt2(player):
 
 
 def mission_4_ending(player):
-    dialogue('You make it to the merchant. Five guards surround him.')
+    dialogue('You make it to the merchant. Ten guards surround him.')
     dialogue('\nThe merchant shouts to you "Defeat the guards and I will be freed."')
 
-    if player.fight(True, 'g5'):
+    if player.fight(True, 'g10'):
         dialogue(
             'Well done, Adventurer. Thank you for saving me. Take this armour as a reward. You gain 5hp.')
 
