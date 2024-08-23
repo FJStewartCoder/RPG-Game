@@ -8,4 +8,4 @@ If you have any ideas for the game, excluding additionial missions after mission
 Future Ideas:
 -Adjust enemy amounts in missions. Potentially, new enemy.
 -More riddles for the witch.
--Character and enemy encyclopedia.
+-Character and enemy encyclopeadia.
