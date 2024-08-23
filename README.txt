@@ -1,3 +1,5 @@
+If you are uninterested by the source code and would just like to try the code. Install the 'game' branch instead.
+
 To run the game, open the file named 'RPG.py' and run it. The other files allow the game to run. Ensure the 'RPG.py' file is run from within the folder.
 This game requires the use of Python version 3.10 or later because of the use of match case statements.
 Ensure that Python 3.10 or later is installed before trying to play.
