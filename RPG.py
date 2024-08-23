@@ -5,6 +5,7 @@ import conversions as c
 import missions as m
 import merchant_missions as mm
 import dialogue as d
+from encyclopeadia import encyclopeadia
 
 try:
     open('Savecodes.txt', 'x')
@@ -35,7 +36,7 @@ class Enemy:
                 self.damage = 10
                 self.max_health = 200
             case 'MEGA GUARD':
-                self.damage = 15
+                self.damage = 20
                 self.max_health = 300
             case 'THE ALMIGHTY':
                 self.damage = 125
@@ -329,6 +330,10 @@ def generate_save_code(player, merchants=0, missions=0) -> str:
 
 
 def load_game(shuffled_code) -> None:
+    if shuffled_code == 'SECRETCODE':
+        encyclopeadia()
+        return False
+
     is_valid = True
     save_code = list('xxxxxxxxx')
 
