@@ -372,11 +372,11 @@ def load_game(shuffled_code) -> None:
         is_valid = False
     elif player.health > player.max_health:
         is_valid = False
-    elif merchants == 1 and missions <= 2:
+    elif merchants == 1 and missions < 2:
         is_valid = False
-    elif merchants == 2 and missions <= 4:
+    elif merchants == 2 and missions < 4:
         is_valid = False
-    elif merchants == 3 and missions <= 7:
+    elif merchants == 3 and missions < 7:
         is_valid = False
 
     if is_valid:
