@@ -372,11 +372,11 @@ def load_game(shuffled_code) -> None:
         is_valid = False
     elif player.health > player.max_health:
         is_valid = False
-    elif merchants == 1 and missions < 2:
+    elif merchants == 1 and missions <= 2:
         is_valid = False
-    elif merchants == 2 and missions < 4:
+    elif merchants == 2 and missions <= 4:
         is_valid = False
-    elif merchants == 3 and missions < 7:
+    elif merchants == 3 and missions <= 7:
         is_valid = False
 
     if is_valid:
@@ -475,7 +475,7 @@ def reading_menu():
         d.reading_speed = speed
 
 
-def main(save_code):
+def main_menu(save_code):
     merchants = 0
     missions = 0
 
@@ -615,7 +615,7 @@ def prologue():
     return player
 
 
-if __name__ == '__main__':
+def main():
     with open('Savecodes.txt', 'r') as f:
         saved_save_codes = [code.strip() for code in f.readlines()]
         if saved_save_codes:
@@ -632,13 +632,18 @@ if __name__ == '__main__':
                     'Enter your, 10 character, save code: ').upper()
                 if len(input_save_code) == 10:
                     if load_game(input_save_code):
-                        main(input_save_code)
+                        main_menu(input_save_code)
                     else:
                         print('Try again.')
             else:
                 print()
                 player = prologue()
-                main(generate_save_code(player))
+                main_menu(generate_save_code(player))
         else:
             player = prologue()
-            main(generate_save_code(player))
+            main_menu(generate_save_code(player))
+
+
+
+if __name__ == '__main__':
+    main()

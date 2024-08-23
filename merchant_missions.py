@@ -504,7 +504,7 @@ def witch_3(player, bonus_type):
         reward = round(r.random() + 1, 2)
     else:
         dialogue('\nI knew that I would beat you, at that one.')
-        dialogue('\nBefore you leave, I will spin this wheel of misfortune. This will determine the curse you will recieve.')
+        dialogue('\nBefore you leave, I will spin this wheel of unfortune. This will determine the curse you will recieve.')
         dialogue('BECAUSE YOU LOSE!')
         reward = round((r.random() + 1)/2, 2)
 
