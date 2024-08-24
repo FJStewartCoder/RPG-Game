@@ -3,7 +3,7 @@ from dialogue import dialogue
 
 
 def die():
-    dialogue('\nUnfortunately, this is the end of the road for you...')
+    dialogue('\nUnfortunately, this is the end of the road for you...', 3)
     quit()
 
 
