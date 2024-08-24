@@ -38,8 +38,8 @@ def places():
                 continue
 
 
-def merchants():
-    choices = ['Swordsmith', 'Armourer', 'Witch', 'Metalworker', 'Woodworker', 'Chemist', 'Villager', 'Return']
+def people():
+    choices = ['The Guardian', 'Swordsmith', 'Armourer', 'Witch', 'Metalworker', 'Woodworker', 'Chemist', 'Villager', 'Return']
 
     while True:
         for option_num, option in enumerate(choices):
@@ -56,26 +56,58 @@ def merchants():
             continue
 
         match choices[choice - 1]:
+            case 'The Guardian':
+                dialogue('The Guardian:')
+                dialogue('\nThe Guardian is one of the 3 founders of Laketree Village. Known for his incredible magic skills and intelligence, he was the protector of the founders.')
+                dialogue('Along with the Witch and THE ALMIGHTY, he built the foundations of the new village for newcomers to survive in.')
+                dialogue('However, when THE ALMIGHTY turned on them he was the only alive founder. He thought...')
+                dialogue('The Guardian can be found only in the village. Due to the imminent threat from THE ALMIGHTY, he keeps his distance.\n')
+                continue
             case 'Swordsmith':
-                print('Swrdsmth')
+                dialogue('Swordsmith:')
+                dialogue("\nThe Swordsmith is an unusual character. Although he doesn't speak much he knows a lot more than most.")
+                dialogue('He is the trusted sword maker in the village and he keeps the wild boars out of the other villagers way.')
+                dialogue('He is often found in the forest and at his hut making swords and hammers. His boar that he keeps around is not very friendly. So, make sure you do not get on his bad side.\n')
                 continue
             case 'Armourer':
-                print('Armr')
+                dialogue('Armourer:')
+                dialogue('\nThe newcomer of the bunch is the Armourer. His incredible talent to create beautiful patterns in his armour is apreciated by the other villagers.')
+                dialogue('He was once hired by THE ALMIGHTY, until he escaped his cage one day. He now provides villagers with shields, in case of an attack.')
+                dialogue('He is definitely not known for his spelling, however. The sign on his hut reads "WElLcOm too Mee Hut! ArM oRuH."')
+                dialogue('He can be found walking through the forest at times but this leaves him vulnerable to being robbed. This happens often... too often.\n')
                 continue
             case 'Witch':
-                print('Wtch')
+                dialogue('Witch:')
+                dialogue('\nThe Witch is one of the 3 founder of Laketree Village. She was the only female survivor from the old village.')
+                dialogue('Within the village, she was responsible for constructing everything with the power of magic. However, when THE ALMIGHTY got jealous of her ability he captured her.')
+                dialogue('For years she was suspected to be in the castle but it was never truly known.')
+                dialogue('She is often found hiding in her hut, conjuring magic and creating puzzles and games.\n')
                 continue
             case 'Metalworker':
-                print('Mtlwrkr')
+                dialogue('Metalworker:')
+                dialogue('\nThe Metalworker is like the Swordsmith of the new generation. He mines his own metals and ores and completes the entire process from scratch.')
+                dialogue('His item are very expensive but well crafted. They are the best in all of the land. However, he is a simple and lazy person.')
+                dialogue('So, you can often find him sleeping at his hut. He is willing to bargain when half asleep. So, for the best deals wake him up first.\n')
                 continue
             case 'Woodworker':
-                print('Wdwrkr')
+                dialogue('Woodworker/Bushcraft Warrior:')
+                dialogue('\nWhether he is or is not actually a woodworker, we do not know. However, he is an incredible pickpocket and robber.')
+                dialogue('We know that he goes by the name "The Bushcraft Warrior" at night. He roams the forest looking for victims. In the day, he attempts to rob houses. Especially the armourer.')
+                dialogue('We do not know where he often is. If we did, we would stop getting robbed.\n  ')
                 continue
             case 'Chemist':
-                print('Chmst')
+                #man
+                dialogue('Chemist:')
+                dialogue('\nThe Chemist is the younger, alchemist brother of the Witch. He is known for his tricks.')
+                dialogue('The Chemist has talent similar to the Witch but he uses it to trick villagers instead.')
+                dialogue('The Chemist was the first child born and raised in the new village.')
+                dialogue('The Chemist can be found at his house, brewing potions in his garden.\n')
                 continue
             case 'Villager':
-                print('Vlgr')
+                dialogue('Villager:')
+                dialogue("\nThis villager is lacking intelligence. So, he keeps drinking the Chemist's potions")
+                dialogue('We do no know much about the Villager because he always is cursed by something. Currently, he is only able to speak backwards. Previously, he has been turned into a frog; was only able to walk on his hands; thought he was a dog and he became French.')
+                dialogue('He is often found at his house, shouting for help.\n')
                 continue
             case 'Return':
                 return
@@ -158,7 +190,7 @@ def enemies():
 def encyclopeadia():
     dialogue('\nWelcome to the encyclopeadia of this game.')
 
-    choices = ['Places', 'Merchants', 'Enemies', 'Return']
+    choices = ['Places', 'People', 'Enemies', 'Return']
 
     while True:
         for option_num, option in enumerate(choices):
@@ -178,8 +210,8 @@ def encyclopeadia():
             case 'Places':
                 places()
                 continue
-            case 'Merchants':
-                merchants()
+            case 'People':
+                people()
                 continue
             case 'Enemies':
                 enemies()
