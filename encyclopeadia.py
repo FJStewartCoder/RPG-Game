@@ -20,16 +20,35 @@ def places():
 
         match choices[choice - 1]:
             case 'Laketree Village':
-                print('LTree Vlg')
+                dialogue('Laketree Village:')
+                dialogue('\nLaketree Village is situated in the centre of everything nearby. The Abandoned Village is on the hill next to the village; the Forest surrounds the village and the Castle is situated in down the gravel path that connects to the village.')
+                dialogue('Laketree Village was built by The Founders. Comprised of THE ALMIGHTY, the Guardian and the Witch, the village was built by them hundreds of years ago.')
+                dialogue('The village is said to provide anyone with infinite life but this may be a way of hiding the real way The Founders have lived so long.')
+                dialogue('\nThe village was constructed from a magic brick that is unidentifiable for most but The Founders. This means that the houses look new forever.')
+                dialogue('Curiously, there is a shrine in the centre of the village that appears to be wearing slowly. This may be the source of the magic.\n')
                 continue
             case 'The Forest':
-                print('Frst')
+                dialogue('Forest:')
+                dialogue('\nThe Forest has concerned many people, for many years. The Forest has been growing very rapidly since the first tree was planted.')
+                dialogue('This has sparked many theories as to why it does this. The conclusion that most people arrived at was that the forest was drawing magic and energy from the ground to fuel the village.')
+                dialogue('However, this means that zombies and wild boars are created from summoning stones.')
+                dialogue('This may have been originally used to create power for THE ALMIGHTY but this may have corrupted his thoughts.')
+                dialogue('Predictions say that the trees may draw more power than is avalible within the next 5 years causing the entire forest to go up in flames.\n')
                 continue
             case 'The Castle':
-                print('Cstl')
+                dialogue('Castle:')
+                dialogue('\nThe Castle used to be a ruined monument that could have revealed the past of the land.')
+                dialogue("Once The Founders arrived, they restored ther castle using the village's magic. Since they restored it, they destroyed all evidence of the past.")
+                dialogue("So, we don't know the history of the castle and it simply sits they as THE ALMIGHTY's den.")
+                dialogue("Currently, the castle is occupied by THE ALMIGHTY and also holds THE ALMIGHTY's prisoners.")
+                dialogue('It is very dangerous to go down to the Castle but it holds lots of treasure and valuable people.\n')
                 continue
             case 'Abandoned Village':
-                print('Abndnd Vlg')
+                # the original village.
+                dialogue('Abandoned Village:')
+                dialogue('\nThe Abandoned Village was once the home of adventurers. However, it got left behind in hope of a new place to settle.')
+                dialogue('It is currently occupied by many zombies. The village used to have hundreds of markets and huts but these were all destroyed.')
+                dialogue('The history of the village is mostly hidden by The Founders in a hidden chamber somewhere. The horrid history of the village is best not known.\n')
                 continue
             case 'Return':
                 return
@@ -96,7 +115,6 @@ def people():
                 dialogue('We do not know where he often is. If we did, we would stop getting robbed.\n  ')
                 continue
             case 'Chemist':
-                #man
                 dialogue('Chemist:')
                 dialogue('\nThe Chemist is the younger, alchemist brother of the Witch. He is known for his tricks.')
                 dialogue('The Chemist has talent similar to the Witch but he uses it to trick villagers instead.')

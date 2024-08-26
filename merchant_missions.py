@@ -185,10 +185,10 @@ def shop_metalworker(money, inventory):
                     dialogue('Unfortunately, I can not offer you this item. You leave.')
                     return money
                 else:
-                    if r.randint(1, 3) == 1 and cost > 40:
+                    if r.randint(1, 2) == 1 and cost > 40:
                         cost -= r.randint(1, cost - 40)
 
-                        messages = [f'How about {cost}?', f'Maybe, I can do {cost}', f'I could go to {cost}.', f'Will you take one for {cost}?']
+                        messages = [f'How about {cost}?', f'Maybe, I can do {cost}.', f'I could go to {cost}.', f'Will you take one for {cost}?']
                         message = r.choice(messages)
 
                         dialogue(f'\n{message}')
@@ -227,7 +227,7 @@ def shop_metalworker(money, inventory):
 def shop_chemist(money, inventory):
     dialogue("You walk to the Chemist's\n")
     dialogue('When you arrive, he is brewing a potion in the garden outside his hut.')
-    dialogue('\nWelcome! I am guessing you come for some items. Well, I have only two items. A glass bottle and this potion.')
+    dialogue('\nWelcome! I am guessing you have come for some items. Well, I have only two items. A glass bottle and this potion.')
     dialogue('Surely, you need one of them. First, how much money do you have? It costs 10 gold for one.')
     dialogue(f'\nYou present him with {money} gold coins.')
 
@@ -270,7 +270,7 @@ def shop_villager(money, inventory):
             choice: str = input('>>> ').lower()
             match choice:
                 case 'no':
-                    dialogue('You give him the potion')
+                    dialogue('You give him the potion.')
                     inventory.remove('Potion')
                     in_reverse = False
                     break
@@ -384,11 +384,11 @@ def armourer(player):
 
 def give_reward(player, bonus_type, reward_amount):
     if bonus_type == 'health':
-        health_bonus = round(player.max_health * (reward_amount - 1))
+        health_bonus = round((player.max_health * reward_amount) - player.max_health)
         player.add_health(health_bonus, True)
 
     elif bonus_type == 'damage':
-        damage_bonus = round(player.damage * (reward_amount - 1))
+        damage_bonus = round((player.damage * reward_amount) - player.damage)
         player.add_damage(damage_bonus)
 
     else:
@@ -510,7 +510,7 @@ def witch_3(player, bonus_type):
 
     give_reward(player, bonus_type, reward)
 
-    dialogue(f'\nThe witch waves her wand and you recieve a {round(100 * (reward - 1))}% {bonus_type} bonus.')
+    dialogue(f'\nThe witch waves her wand and you receive a {round(100 * (reward - 1))}% {bonus_type} bonus.')
     dialogue('\nThen, you leave.')
 
 

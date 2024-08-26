@@ -246,7 +246,7 @@ class Player:
             if self.max_health - amount <= 0:
                 return False
             else:
-                self.max_health -= amount
+                self.max_health += amount
                 if self.health > self.max_health:
                     self.health = self.max_health
 

@@ -2,6 +2,11 @@ from random import randint
 from dialogue import dialogue
 
 
+def credits():
+    # make the game credits. It was all me.
+    pass
+
+
 def die():
     dialogue('\nUnfortunately, this is the end of the road for you...', 3)
     quit()
@@ -220,7 +225,7 @@ def mission_3(player):
                             case 'stop':
                                 dialogue('By stopping, you are engulfed by the fog and die...')
                                 die()
-                            case '_':
+                            case _:
                                 dialogue('You walk further down the path, the fog still behind you.')
                                 current_continues += 1
                                 continue
@@ -324,7 +329,7 @@ def mission_4_alt1(player):
     dialogue(
         'You survive the ambush. Ahead of you is a straight path to the merchant. You follow it.')
     dialogue(
-        '\nYou see something sparking out of the ground. Do you pick it up... yes or no?', 0)
+        '\nYou see something sparkling out of the ground. Do you pick it up... yes or no?', 0)
 
     while True:
         choice: str = input('>>> ').lower()
