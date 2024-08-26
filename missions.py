@@ -3,8 +3,8 @@ from dialogue import dialogue
 
 
 def credits():
-    # make the game credits. It was all me.
-    pass
+    dialogue("Thank you for playing my game. A reward for beating the game is a save code. By entering the save code SECRETCODE you will have access to the game's encyclopeadia.", bonus_sleep_time=4)
+    quit()
 
 
 def die():
@@ -213,7 +213,7 @@ def mission_3(player):
                 continues_to_survive = 200
                 dialogue(
                     'You wander down the path. You turn around... and see... THE FOG.', bonus_sleep_time=2)
-                
+
                 while True:
                     if current_continues >= continues_to_survive:
                         dialogue('You walk so far down the path that you outrun the fog.')
@@ -1205,7 +1205,7 @@ def mission_10_guardian_sacrifice():
     dialogue('Despite feelings of elation, you are missing a piece. Your guardian...',
              bonus_sleep_time=2)
     dialogue('\nWELL DONE ADVENTURER! You beat the game. If you would like to play again to try other paths, please restart. You may find that there are other endings.')
-    quit()
+    credits()
 
 
 def mission_10_sacrifice_everyone(player):
@@ -1226,7 +1226,7 @@ def mission_10_sacrifice_everyone(player):
         dialogue('Unfortunately, you are overwhelmed by minions.')
         dialogue('THE ALMIGHTY takes over your village and grows in power. Eventually, he gains enough power to take over the rest of the world.\n')
         dialogue('Your adventure has come to an end and the game is over. Unfortunately, you lose. If you would like to play again to try other paths, please restart. You may find that there are other endings.')
-        quit()
+        credits()
 
     dialogue(
         'HOW DARE YOU DEFEAT MY MINIONS! TAKE ME ON, IF YOU THINK YOU ARE SO POWERFUL!')
@@ -1235,14 +1235,14 @@ def mission_10_sacrifice_everyone(player):
         dialogue('HAHAHA. WEAKLING. I KNEW YOU WERE AS WEAK AS YOU LOOK.')
         dialogue('THE ALMIGHTY, with a new found rage, kills everyone. I mean EVERYONE. The world is now covered with boars, guards and fire.\n')
         dialogue('Your adventure has come to an end and the game is over. Unfortunately, you lose. If you would like to play again to try other paths, please restart. You may find that there are other endings.')
-        quit()
+        credits()
 
     dialogue('THE ALMIGHTY HAS FALLEN! You feel incredible. The all powerful.')
     dialogue('\nHowever, no one is left to celebrate. You sacrificed all of them. Then, you realise...', bonus_sleep_time=2)
     dialogue('YOU WERE THE ALMIGHTY, ALL ALONG. YOU KILLED EVERYONE FOR POWER...',
              bonus_sleep_time=2)
     dialogue('\nAlthough you completed the objective and won, is this really the reality you wanted? If you would like to play again to try other paths, please restart. You may find that there are other endings.')
-    quit()
+    credits()
 
 
 def mission_10_team_effort():
@@ -1258,7 +1258,7 @@ def mission_10_team_effort():
     dialogue('\nYou remember nothing. You live on as a ghost. The battle is over. The world is returned to normal.')
     dialogue('In the middle of the village, there is monument of you, erected in your memory. On the plaque, it reads "THE BRAVE ADVENTURER!"')
     dialogue('\nWELL DONE ADVENTURER! You saved the world. Although dead, you live on in the memory of everyone. You win. If you would like to play again to try other paths, please restart. You may find that there are other endings.')
-    quit()
+    credits()
 
 
 def mission_10(player):

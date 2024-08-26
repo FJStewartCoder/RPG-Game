@@ -649,6 +649,5 @@ def main():
             main_menu(generate_save_code(player))
 
 
-
 if __name__ == '__main__':
     main()
